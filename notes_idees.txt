@@ -16,3 +16,13 @@ CAHIER DES CHARGES :
     - Pente aléatoire à chaque tir
     - Toutes directions possibles
     - Balle change aléatoirement couleur
+
+
+can.delete(balle) => One ne sais pas si c'est considéré individuellement ou par groupe.
+
+ADMETTONS
+- Le pistolet est en 50;50
+- La balle est aussi en 50;50
+- Quand on tire, la balle n'est plus à 50;50
+- On ajoute un nombre aléatoire entre en -10 et 10 à ajouter à x et à y (les deux nombres peuvent être différents)
+- La valeur aléatoire reste la même jusqu'à ec que la balle touvhe le bord ou l'utilisateur appuye sur "tirer"
