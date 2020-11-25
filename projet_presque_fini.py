@@ -2,18 +2,24 @@
 """
 Created on Wed Nov 25 19:05:54 2020
 
-@author: Utilisateur
+@author: Tjibzo
 """
 
+# ----- IMPORT MODULES -----
 from tkinter import *
 import random
 from pip import *
+
+
+# ----- POISSON -----
+
 x_main=60 #en attente de la position de la main sur l'axe des absices
 y_main=380 #en attente de la position de la main sur l'axe des ordonées
 nb_poissons=0
 choix_poisson=0
 coul = ['blue','yellow','red','black','dark grey'] #On créé une liste avec les couleurs possibles pour la balle
 couleur = random.choice(coul) #On choisit une couleur aléatoire pour la balle
+
 
 def pecher(event):
     global x,y,dx,dy,choix_poisson,couleur
@@ -74,17 +80,12 @@ def depl():
         balle = can.create_oval(x1,y1,x1+20,y1+10, width=2,fill=couleur)
 
 
+# ----- PISTOLET -----
 
-
-
-
-
-
-
-
-
-
-
+x1,y1 = 50,50
+flag = 0
+dx = randint(-10,10)
+dy = randint(-10,10)
 
 def tirer():
     """
@@ -120,31 +121,9 @@ def recharger():
     can.itemconfig(balle, fill=couleur) #On met à jour la couleur de la balle
     #print(f'Après reload ::: x1:{x1} ; y1:{y1} ; dx:{dx} ; dy:{dy}')
 
-x1,y1 = 50,50
-flag = 0
-dx = randint(-10,10)
-dy = randint(-10,10)
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+# ----- INITIALISATION FENÊTRE (test) -----
 
 #démarrage du programme principal : construction de la fenêtre et des widgets
 fen=Tk()
