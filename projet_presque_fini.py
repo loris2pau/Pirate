@@ -23,7 +23,7 @@ couleur = random.choice(coul) #On choisit une couleur aléatoire pour la balle
 
 def pecher(event):
     global x,y,dx,dy,choix_poisson,couleur
-    choix_poisson=randint(0,1)
+    choix_poisson=random.randint(0,1)
     couleur = random.choice(coul)
     ferrer.config(text='férrer')
     can.delete(ALL)
@@ -82,10 +82,10 @@ def depl():
 
 # ----- PISTOLET -----
 
-x1,y1 = 50,50
+x1,y1 = 545,120
 flag = 0
-dx = randint(-10,10)
-dy = randint(-10,10)
+dxa = random.randint(-10,10)
+dya = random.randint(-10,10)
 
 def tirer():
     """
@@ -93,16 +93,17 @@ def tirer():
     Elle gère le mouvement de la balle.
     """
     global flag
-    global x1, y1, dx, dy
-    #print(f'Avant reload ::: x1:{x1} ; y1:{y1} ; dx:{dx} ; dy:{dy}')
+    global x1, y1, dxa, dya
+    #print(f'Avant reload ::: x1:{x1} ; y1:{y1} ; dxa:{dxa} ; dya:{dya}')
     if flag==0: #On teste si l'objet est statique
         flag=1  #Si c'est le cas, on passe flag à 1
-    x1, y1 = x1+dx, y1+dy #On ajoute les valeurs de dx et dy respectivement à x1 eet y1
+        #print('tirer')
+    x1, y1 = x1+dxa, y1+dya #On ajoute les valeurs de dx1 et dy1 respectivement à x1 eet y1
     can.coords(balle, x1, y1, x1+20, y1+10) #On modifie les coordonnées de la balle
     if x1 > 630 or x1 < 10 or y1 > 630 or y1 < 10: #Si la balle se trouve à moins de 10px des bords
         flag = 0 #Flag est passé à 0
         recharger()
-    #print(f'Après reload ::: x1:{x1} ; y1:{y1} ; dx:{dx} ; dy:{dy}')
+    #print(f'Après reload ::: x1:{x1} ; y1:{y1} ; dxa:{dxa} ; dya:{dya}')
     if flag>0:  #Si l'objet est toujours en mouvement
         fen.after(50, tirer) #On rappelle la fonction tirer au bout de 50ms
 
@@ -111,15 +112,16 @@ def recharger():
     Cette fonction est appellée lorsque la balle atteint un bord.
     Cette fonction permet de recharger le pistolet en remettant la balle à ses coordonnées initiales.
     """
-    global x1, y1, dx, dy
-    can.coords(balle, 50, 50, 70, 60) #On remet la balle à ses coordonnées initiales
-    x1,y1 = 50,50 #On remet x1 et y1 à leurs valeurs initiales
-    dx = random.randint(-10,10) #Pareil pour dx
-    dy = random.randint(-10,10) #et dy
+    global x1, y1, dxa, dya
+    can.coords(balle, 545, 120, 565, 130) #On remet la balle à ses coordonnées initiales
+    x1,y1 = 545,120 #On remet x1 et y1 à leurs valeurs initiales
+    dxa = random.randint(-10,10) #Pareil pour dx1
+    dya = random.randint(-10,10) #et dy1
     coul = ['blue','yellow','red','black','dark grey'] #On créé une liste avec les couleurs possibles pour la balle
     couleur = random.choice(coul) #On choisit une couleur aléatoire pour la balle
     can.itemconfig(balle, fill=couleur) #On met à jour la couleur de la balle
-    #print(f'Après reload ::: x1:{x1} ; y1:{y1} ; dx:{dx} ; dy:{dy}')
+    #print(f'Après reload ::: x1:{x1} ; y1:{y1} ; dxa:{dxa} ; dya:{dya}')
+
 
 
 
